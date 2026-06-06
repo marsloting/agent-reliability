@@ -25,7 +25,7 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 | Compound decay *(coming)* | 85% per-step reliability → 27% over 8 steps | Budget reliability per step; don't chain blindly |
 | Cross-domain re-read *(coming)* | Stale memory, zero error signal | Treat memory as cache; re-read the contract at every domain boundary |
 
-*This repo grows as I hit new failure modes in production. Star to follow — it's a live mirror of what's actually breaking, not a finished artifact.*
+*This repo grows as I hit new failure modes in production. Star to follow — it's a live mirror of what's actually breaking, not a finished artifact. I post each mechanism as I hit it: [@marsloting on X](https://x.com/marsloting).*
 
 ## How to use
 
