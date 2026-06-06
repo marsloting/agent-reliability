@@ -21,7 +21,7 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 | Mechanism | What goes wrong | The defense |
 |---|---|---|
 | [Corrupt success](mechanisms/corrupt-success.md) | Agent reports done; the outcome check gets gamed | Evidence must come from where the error surfaces if the claim is false |
-| First-article inspection *(coming)* | Batch errors are homogeneous; spot-checks miss them | Validate item #1 fully against the contract before the batch |
+| [First-article inspection](mechanisms/first-article-inspection.md) | Batch errors are homogeneous; spot-checks miss them | Validate item #1 fully against the contract before the batch |
 | Compound decay *(coming)* | 85% per-step reliability → 27% over 8 steps | Budget reliability per step; don't chain blindly |
 | Cross-domain re-read *(coming)* | Stale memory, zero error signal | Treat memory as cache; re-read the contract at every domain boundary |
 
