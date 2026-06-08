@@ -22,8 +22,8 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 |---|---|---|
 | [Corrupt success](mechanisms/corrupt-success.md) | Agent reports done; the outcome check gets gamed | Evidence must come from where the error surfaces if the claim is false |
 | [First-article inspection](mechanisms/first-article-inspection.md) | Batch errors are homogeneous; spot-checks miss them | Validate item #1 fully against the contract before the batch |
-| Compound decay *(coming)* | 85% per-step reliability → 27% over 8 steps | Budget reliability per step; don't chain blindly |
-| Cross-domain re-read *(coming)* | Stale memory, zero error signal | Treat memory as cache; re-read the contract at every domain boundary |
+| [Compound decay](mechanisms/compound-decay.md) | 85% per-step reliability → 27% over 8 steps | Count the chain; verified checkpoints every 3–4 steps; checkpoint = rollback unit |
+| [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Stale memory, zero error signal | Memory is an expired cache; re-read the contract at every domain boundary |
 
 *This repo grows as I hit new failure modes in production. Star to follow — it's a live mirror of what's actually breaking, not a finished artifact. I post each mechanism as I hit it: [@marsloting on X](https://x.com/marsloting).*
 
