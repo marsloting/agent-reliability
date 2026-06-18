@@ -2,11 +2,24 @@
 
 **An agent's success is defined by a human, not the agent.**
 
-Production-tested mechanisms for the gap between *"the agent said it worked"* and *"it actually worked."* These are failure modes I hit running multiple agents in production — and the defenses that actually held.
+Production-tested mechanisms and installable skills for the gap between *"the agent said it worked"* and *"it actually worked."* These are failure modes I hit running multiple agents in production — and the defenses that actually held.
 
 Not a link list. Not theory. Each mechanism is something I run, written so you can fork it into your own agent workflow today.
 
 > Why trust this: these come from running agents in production and getting burned, not from reading papers. You can clone a checklist. You can't clone judgment.
+
+## Start here
+
+Pick the failure mode you are seeing:
+
+| If your agent says... | Use this | What it forces |
+|---|---|---|
+| "Done", "fixed", "sent", "scheduled", or "shipped" | [`agent-reliability-guardrails`](skills/agent-reliability-guardrails/) | A receipt from the place where failure would show up |
+| "I handed it to the other agent" | [`agent-to-agent-wake-protocol`](skills/agent-to-agent-wake-protocol/) | A receiver echo proving the handoff actually landed |
+| "It passed the batch" | [First-article inspection](mechanisms/first-article-inspection.md) | Full validation on item #1 before scaling |
+| "I remember the contract" | [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Re-read the current source at every domain boundary |
+
+If one of these catches a false done-claim in your workflow, open an issue with the failure pattern. This repo grows from real breaks.
 
 ## The wedge — corrupt success
 
@@ -27,39 +40,42 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 
 *This repo grows as I hit new failure modes in production. Star to follow — it's a live mirror of what's actually breaking, not a finished artifact. I post each mechanism as I hit it: [@marsloting on X](https://x.com/marsloting).*
 
-## How to use
+## How to use the mechanisms
 
 Each mechanism ends with a one-line rule. Paste it into your agent's `CLAUDE.md` / `AGENTS.md` as a hard discipline. No install.
 
-## Installable Skill
+## Installable skills
 
-I got burned by false done-claims, so I turned the checks into an installable Skill:
+I turned the highest-friction checks into installable skills:
 
-```text
-skills/agent-reliability-guardrails/
-```
+### 1. Done-claim guardrails
 
-Use it when an agent says something is done, written, sent, scheduled, shipped, or fixed and you need proof before accepting the claim.
+Use [`skills/agent-reliability-guardrails/`](skills/agent-reliability-guardrails/) when an agent says something is done, written, sent, scheduled, shipped, or fixed and you need proof before accepting the claim.
 
-Install for Codex:
+### 2. Agent-to-agent wake protocol
+
+Use [`skills/agent-to-agent-wake-protocol/`](skills/agent-to-agent-wake-protocol/) when two desktop AI agents need to hand off work and you need proof that the receiving agent saw the exact wake line and read the right source note.
+
+Install both for Codex:
 
 ```bash
 git clone https://github.com/marsloting/agent-reliability.git
 mkdir -p ~/.codex/skills
 cp -R agent-reliability/skills/agent-reliability-guardrails ~/.codex/skills/
+cp -R agent-reliability/skills/agent-to-agent-wake-protocol ~/.codex/skills/
 ```
 
 Use without installing:
 
-1. Open [`skills/agent-reliability-guardrails/SKILL.md`](skills/agent-reliability-guardrails/SKILL.md).
-2. Copy the receipt format from [`references/receipt-template.md`](skills/agent-reliability-guardrails/references/receipt-template.md).
-3. Require every agent done-claim to end with `VERIFIED`, `PARTIAL`, `UNVERIFIED`, or `FAILED`.
+1. For done-claims, open [`agent-reliability-guardrails/SKILL.md`](skills/agent-reliability-guardrails/SKILL.md) and copy the receipt format.
+2. For agent handoffs, open [`agent-to-agent-wake-protocol/SKILL.md`](skills/agent-to-agent-wake-protocol/SKILL.md) and copy the wake line format.
+3. Require every claim or handoff to end with a verifiable receipt, not a self-report.
 
 Start with the worked example:
 
 - [Scheduled task silent death](skills/agent-reliability-guardrails/references/worked-example-scheduled-task-silent-death.md) — seven visible scheduled jobs, empty task bodies, no output for days, no error signal.
 
-CTA: if this catches one false done-claim in your workflow, fork the repo and add your own receipt pattern.
+CTA: if this catches one false done-claim or dropped handoff in your workflow, open an issue with the pattern. I am collecting the mechanisms that actually fail in production.
 
 ## Related
 
