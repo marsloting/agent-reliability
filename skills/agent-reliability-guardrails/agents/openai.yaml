@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Reliability Guardrails"
+  short_description: "Verify agent done-claims with receipts"
+  default_prompt: "Use $agent-reliability-guardrails to verify this agent done-claim before I accept it."

@@ -31,6 +31,36 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 
 Each mechanism ends with a one-line rule. Paste it into your agent's `CLAUDE.md` / `AGENTS.md` as a hard discipline. No install.
 
+## Installable Skill
+
+I got burned by false done-claims, so I turned the checks into an installable Skill:
+
+```text
+skills/agent-reliability-guardrails/
+```
+
+Use it when an agent says something is done, written, sent, scheduled, shipped, or fixed and you need proof before accepting the claim.
+
+Install for Codex:
+
+```bash
+git clone https://github.com/marsloting/agent-reliability.git
+mkdir -p ~/.codex/skills
+cp -R agent-reliability/skills/agent-reliability-guardrails ~/.codex/skills/
+```
+
+Use without installing:
+
+1. Open [`skills/agent-reliability-guardrails/SKILL.md`](skills/agent-reliability-guardrails/SKILL.md).
+2. Copy the receipt format from [`references/receipt-template.md`](skills/agent-reliability-guardrails/references/receipt-template.md).
+3. Require every agent done-claim to end with `VERIFIED`, `PARTIAL`, `UNVERIFIED`, or `FAILED`.
+
+Start with the worked example:
+
+- [Scheduled task silent death](skills/agent-reliability-guardrails/references/worked-example-scheduled-task-silent-death.md) — seven visible scheduled jobs, empty task bodies, no output for days, no error signal.
+
+CTA: if this catches one false done-claim in your workflow, fork the repo and add your own receipt pattern.
+
 ## Related
 
 - [vectara/awesome-agent-failures](https://github.com/vectara/awesome-agent-failures) — a catalog of *what* went wrong (news links). This repo is the opposite: the *mechanisms* that stop it.
