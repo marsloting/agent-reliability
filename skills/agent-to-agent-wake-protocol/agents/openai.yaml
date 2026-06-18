@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent-to-Agent Wake Protocol"
+  short_description: "Verifiable handoffs between AI apps"
+  default_prompt: "Use $agent-to-agent-wake-protocol to hand off a task to another desktop AI agent with a verifiable wake line."
