@@ -19,7 +19,7 @@ Pick the failure mode you are seeing:
 | "It passed the batch" | [First-article inspection](mechanisms/first-article-inspection.md) | Full validation on item #1 before scaling |
 | "I remember the contract" | [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Re-read the current source at every domain boundary |
 
-If one of these catches a false done-claim in your workflow, open an issue with the failure pattern. This repo grows from real breaks.
+If one of these catches a false done-claim in your workflow, [open a failure-pattern issue](https://github.com/marsloting/agent-reliability/issues/new?template=failure-pattern.yml). This repo grows from real breaks.
 
 ## The wedge — corrupt success
 
@@ -75,7 +75,7 @@ Start with the worked example:
 
 - [Scheduled task silent death](skills/agent-reliability-guardrails/references/worked-example-scheduled-task-silent-death.md) — seven visible scheduled jobs, empty task bodies, no output for days, no error signal.
 
-CTA: if this catches one false done-claim or dropped handoff in your workflow, open an issue with the pattern. I am collecting the mechanisms that actually fail in production.
+CTA: if this catches one false done-claim or dropped handoff in your workflow, [open a failure-pattern issue](https://github.com/marsloting/agent-reliability/issues/new?template=failure-pattern.yml). I am collecting the mechanisms that actually fail in production.
 
 ## Related
 

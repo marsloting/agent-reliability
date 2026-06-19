@@ -1,0 +1,52 @@
+name: False done-claim or dropped handoff
+description: Share a reliability failure pattern this repo should cover.
+title: "[pattern] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when a rule in this repo caught a real agent reliability failure, or when you have a failure mode that should be covered.
+  - type: dropdown
+    id: failure_type
+    attributes:
+      label: Failure type
+      description: Pick the closest pattern.
+      options:
+        - False done-claim
+        - Dropped agent handoff
+        - Batch output drift
+        - Stale memory or stale contract
+        - Other agent reliability failure
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: What happened?
+      description: Describe the shortest public-safe version of the failure.
+      placeholder: The agent said X was done, but Y was the place where the failure surfaced.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_receipt
+    attributes:
+      label: What receipt would have caught it?
+      description: Name the source of evidence that should have been checked.
+      placeholder: A receiver echo, a downstream file readback, a live endpoint, a scheduled-run output, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: current_defense
+    attributes:
+      label: What defense did you try?
+      description: Optional. Link to a mechanism or skill from this repo if one helped.
+      placeholder: agent-reliability-guardrails, agent-to-agent-wake-protocol, first-article inspection, etc.
+    validations:
+      required: false
+  - type: checkboxes
+    id: public_safe
+    attributes:
+      label: Public-safety check
+      options:
+        - label: I removed secrets, private customer data, private company names, and private emails.
+          required: true
