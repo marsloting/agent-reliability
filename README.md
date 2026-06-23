@@ -10,15 +10,37 @@ Not a link list. Not theory. Each mechanism is something I run, written so you c
 
 ## Start here
 
-Pick the failure mode you are seeing:
+Pick the failure mode you are seeing.
 
-| If your agent says... | Use this | What it forces |
-|---|---|---|
-| "Done", "fixed", "sent", "scheduled", or "shipped" | [`agent-reliability-guardrails`](skills/agent-reliability-guardrails/) | A receipt from the place where failure would show up |
-| "I handed it to the other agent" | [`agent-to-agent-wake-protocol`](skills/agent-to-agent-wake-protocol/) | A receiver echo proving the handoff actually landed |
-| "The owner is still running" or "should I take over?" | [`agent-supervisor-guardrails`](skills/agent-supervisor-guardrails/) | Artifact checks and a safe wait/remind/takeover/stop decision |
-| "It passed the batch" | [First-article inspection](mechanisms/first-article-inspection.md) | Full validation on item #1 before scaling |
-| "I remember the contract" | [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Re-read the current source at every domain boundary |
+### The agent says "done", "fixed", "sent", "scheduled", or "shipped"
+
+Use [`agent-reliability-guardrails`](skills/agent-reliability-guardrails/).
+
+It forces a receipt from the place where failure would show up.
+
+### The agent says "I handed it to the other agent"
+
+Use [`agent-to-agent-wake-protocol`](skills/agent-to-agent-wake-protocol/).
+
+It forces a receiver echo proving the handoff actually landed.
+
+### The owner is still running, or you are deciding whether to take over
+
+Use [`agent-supervisor-guardrails`](skills/agent-supervisor-guardrails/).
+
+It forces artifact checks and a safe wait / remind / takeover / stop decision.
+
+### The batch "passed"
+
+Use [First-article inspection](mechanisms/first-article-inspection.md).
+
+It forces full validation on item #1 before scaling.
+
+### The agent says it remembers the contract
+
+Use [Cross-domain re-read](mechanisms/cross-domain-re-read.md).
+
+It forces a re-read of the current source at every domain boundary.
 
 If one of these catches a false done-claim in your workflow, [open a failure-pattern issue](https://github.com/marsloting/agent-reliability/issues/new?template=failure-pattern.yml). This repo grows from real breaks.
 
@@ -32,12 +54,29 @@ The fix isn't a better model. It's **moving where you collect the evidence**.
 
 ## Mechanisms
 
-| Mechanism | What goes wrong | The defense |
-|---|---|---|
-| [Corrupt success](mechanisms/corrupt-success.md) | Agent reports done; the outcome check gets gamed | Evidence must come from where the error surfaces if the claim is false |
-| [First-article inspection](mechanisms/first-article-inspection.md) | Batch errors are homogeneous; spot-checks miss them | Validate item #1 fully against the contract before the batch |
-| [Compound decay](mechanisms/compound-decay.md) | 85% per-step reliability → 27% over 8 steps | Count the chain; verified checkpoints every 3–4 steps; checkpoint = rollback unit |
-| [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Stale memory, zero error signal | Memory is an expired cache; re-read the contract at every domain boundary |
+### [Corrupt success](mechanisms/corrupt-success.md)
+
+The agent reports done; the outcome check gets gamed.
+
+Defense: evidence must come from where the error surfaces if the claim is false.
+
+### [First-article inspection](mechanisms/first-article-inspection.md)
+
+Batch errors are homogeneous; spot-checks miss them.
+
+Defense: validate item #1 fully against the contract before the batch.
+
+### [Compound decay](mechanisms/compound-decay.md)
+
+85% per-step reliability becomes 27% over 8 steps.
+
+Defense: count the chain; add verified checkpoints every 3-4 steps; checkpoint = rollback unit.
+
+### [Cross-domain re-read](mechanisms/cross-domain-re-read.md)
+
+Memory goes stale with no error signal.
+
+Defense: memory is an expired cache; re-read the contract at every domain boundary.
 
 *This repo grows as I hit new failure modes in production. Star to follow — it's a live mirror of what's actually breaking, not a finished artifact. I post each mechanism as I hit it: [@marsloting on X](https://x.com/marsloting).*
 
