@@ -16,6 +16,7 @@ Pick the failure mode you are seeing:
 |---|---|---|
 | "Done", "fixed", "sent", "scheduled", or "shipped" | [`agent-reliability-guardrails`](skills/agent-reliability-guardrails/) | A receipt from the place where failure would show up |
 | "I handed it to the other agent" | [`agent-to-agent-wake-protocol`](skills/agent-to-agent-wake-protocol/) | A receiver echo proving the handoff actually landed |
+| "The owner is still running" or "should I take over?" | [`agent-supervisor-guardrails`](skills/agent-supervisor-guardrails/) | Artifact checks and a safe wait/remind/takeover/stop decision |
 | "It passed the batch" | [First-article inspection](mechanisms/first-article-inspection.md) | Full validation on item #1 before scaling |
 | "I remember the contract" | [Cross-domain re-read](mechanisms/cross-domain-re-read.md) | Re-read the current source at every domain boundary |
 
@@ -56,20 +57,26 @@ Use [`skills/agent-reliability-guardrails/`](skills/agent-reliability-guardrails
 
 Use [`skills/agent-to-agent-wake-protocol/`](skills/agent-to-agent-wake-protocol/) when two desktop AI agents need to hand off work and you need proof that the receiving agent saw the exact wake line and read the right source note.
 
-Install both for Codex:
+### 3. Agent supervisor guardrails
+
+Use [`skills/agent-supervisor-guardrails/`](skills/agent-supervisor-guardrails/) when one agent supervises another long-running owner and needs artifact checks, handoff evidence, and a safe wait/remind/takeover/stop decision.
+
+Install the skills for Codex:
 
 ```bash
 git clone https://github.com/marsloting/agent-reliability.git
 mkdir -p ~/.codex/skills
 cp -R agent-reliability/skills/agent-reliability-guardrails ~/.codex/skills/
 cp -R agent-reliability/skills/agent-to-agent-wake-protocol ~/.codex/skills/
+cp -R agent-reliability/skills/agent-supervisor-guardrails ~/.codex/skills/
 ```
 
 Use without installing:
 
 1. For done-claims, open [`agent-reliability-guardrails/SKILL.md`](skills/agent-reliability-guardrails/SKILL.md) and copy the receipt format.
 2. For agent handoffs, open [`agent-to-agent-wake-protocol/SKILL.md`](skills/agent-to-agent-wake-protocol/SKILL.md) and copy the wake line format.
-3. Require every claim or handoff to end with a verifiable receipt, not a self-report.
+3. For long-running owners, open [`agent-supervisor-guardrails/SKILL.md`](skills/agent-supervisor-guardrails/SKILL.md) and copy the patrol checklist.
+4. Require every claim, handoff, or takeover to end with a verifiable receipt, not a self-report.
 
 Start with the worked example:
 
