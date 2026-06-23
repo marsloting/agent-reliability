@@ -79,6 +79,7 @@ CTA: if this catches one false done-claim or dropped handoff in your workflow, [
 
 ## Related
 
+- [product-thinking-pack](https://github.com/marsloting/product-thinking-pack) — use this before reliability checks when the agent is likely to build the wrong thing well. It forces product-shape decisions before execution.
 - [vectara/awesome-agent-failures](https://github.com/vectara/awesome-agent-failures) — a catalog of *what* went wrong (news links). This repo is the opposite: the *mechanisms* that stop it.
 - [ai-boost/awesome-harness-engineering](https://github.com/ai-boost/awesome-harness-engineering) — the scaffolding around agents.
 

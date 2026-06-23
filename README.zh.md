@@ -69,6 +69,10 @@ cp -R agent-reliability/skills/agent-to-agent-wake-protocol ~/.codex/skills/
 
 如果它抓到一次虚假 done 或 agent 交接丢失，[开一个 failure-pattern issue](https://github.com/marsloting/agent-reliability/issues/new?template=failure-pattern.yml)。我在收集真正会在生产里坏掉的模式。
 
+## 相关
+
+- [product-thinking-pack](https://github.com/marsloting/product-thinking-pack) — 如果你的问题不是 agent 做不稳，而是它把错误的东西做得很认真，先用这套 product-thinking skills 把产品形状定住，再上可靠性检查。
+
 ---
 
 English → [README.md](README.md)
