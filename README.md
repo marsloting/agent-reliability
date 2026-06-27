@@ -123,6 +123,8 @@ Start with the worked example:
 
 CTA: if this catches one false done-claim or dropped handoff in your workflow, [open a failure-pattern issue](https://github.com/marsloting/agent-reliability/issues/new?template=failure-pattern.yml). I am collecting the mechanisms that actually fail in production.
 
+If you want to adapt a mechanism but are not sure where to place the receipt, [open a usage question](https://github.com/marsloting/agent-reliability/issues/new?template=usage-question.yml).
+
 ## Related
 
 - [product-thinking-pack](https://github.com/marsloting/product-thinking-pack) — use this before reliability checks when the agent is likely to build the wrong thing well. It forces product-shape decisions before execution.

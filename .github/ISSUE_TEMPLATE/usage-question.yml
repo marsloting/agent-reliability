@@ -1,0 +1,54 @@
+name: Usage or adaptation question
+description: Ask how to install, adapt, or apply one of the reliability mechanisms.
+title: "[question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when you want to apply a mechanism or skill from this repo to your own agent workflow.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Pick the closest mechanism or skill.
+      options:
+        - Done-claim guardrails
+        - Agent-to-agent wake protocol
+        - Agent supervisor guardrails
+        - First-article inspection
+        - Compound decay
+        - Cross-domain re-read
+        - Not sure yet
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: What workflow are you trying to make safer?
+      description: Keep it public-safe. Avoid private company, customer, secret, or account details.
+      placeholder: I have an agent that reports a task is done, but I need a receipt from the downstream system before accepting it.
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Where are you stuck?
+      description: Describe the installation, adaptation, or decision point.
+      placeholder: I am not sure which receipt should count, or where to place the checklist in my workflow.
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Optional. Link to the mechanism or skill you looked at.
+      placeholder: I read skills/agent-supervisor-guardrails/SKILL.md but need help adapting the takeover decision.
+    validations:
+      required: false
+  - type: checkboxes
+    id: public_safe
+    attributes:
+      label: Public-safety check
+      options:
+        - label: I removed secrets, private customer data, private company names, and private emails.
+          required: true
